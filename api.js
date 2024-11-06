@@ -14,7 +14,7 @@ function generateId() {
 
 async function connexionApi() {
     try {
-        const url = 'http://89.117.51.172:25100/api/create-session';
+        const url = 'http://localhost:3000/api/create-session';
         const response = await axios.post(url);
 
         if (response.data.sessionId) {
@@ -40,7 +40,7 @@ async function connexionApi() {
 
 async function checkApiStatus() {
     try {
-        const response = await axios.post('http://89.117.51.172:25100/api/check-status', { sessionIdApi });
+        const response = await axios.post('http://localhost:3000/api/check-status', { sessionIdApi });
         return response.data.valid;
     } catch (error) {
         log("info", "API 🔴")
@@ -50,7 +50,7 @@ async function checkApiStatus() {
 
 async function validateConnexion(sessionId) {
     try {
-        const url = 'http://89.117.51.172:25100/api/validate-session';
+        const url = 'http://localhost:3000/api/validate-session';
         const response = await axios.post(url, { sessionId }, {
             headers: { 'Content-Type': 'application/json' }
         });
@@ -65,7 +65,7 @@ async function validateConnexion(sessionId) {
 
 async function loginConnexion(sessionId) {
     try {
-        const url = 'http://89.117.51.172:25100/api/login';
+        const url = 'http://localhost:3000/api/login';
         const response = await axios.post(url, { sessionId }, {
             headers: { 'Content-Type': 'application/json' }
         });
@@ -79,7 +79,7 @@ async function loginConnexion(sessionId) {
 
 async function logoutUser(sessionId) {
     try {
-        const url = 'http://89.117.51.172:25100/api/logout';
+        const url = 'http://localhost:3000/api/logout';
         const response = await axios.post(url, { sessionId }, {
             headers: { 'Content-Type': 'application/json' }
         });
